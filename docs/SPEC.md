@@ -7,7 +7,7 @@
 | 定位 | 全屏透明标注层：快捷键/托盘一键直达，在任意应用上作画；绘制引擎移植自 MarkerOn v2.2.0（MIT，见 THIRD_PARTY_NOTICES.md） |
 | 打开方式 | `openMode: "panel"` + `directLaunch: true`：Panel webview 作为隐藏常驻控制器 + 用户主动打开时的设置页；标注层是 `windowId=overlay` 的额外 custom 窗口（transparent + alwaysOnTop + 无边框 + skipTaskbar + visibleOnAllWorkspaces） |
 | 直达链路 | 托盘「插件动作」（宿主 `trayActions` manifest 字段，本次随宿主新增）或面板入口点击 → 宿主隐藏 Panel 投递 `launch/direct` 关键词 → Panel 页 `onOtoolsKeyword` 接收 → `open_custom_plugin_window`（不存在时创建；已存在时 emit `otools-screendraw:cmd {action:'start'}`） |
-| 快捷键 | 运行时 `window.otools.shortcuts.register('CommandOrControl+Shift+D')`（Panel 页注册，webview 常驻期间生效）；穿透模式期间 overlay 页临时注册全局 `X`/`Escape` 保底（退出即释放）；冷启动建议用户在宿主设置绑定「插件关键词快捷键」 |
+| 快捷键 | 双层：①持久绑定（冷启动）——Panel 自服务调用宿主 `otools_upsert_keyword_shortcut_binding`（id `screendraw-annotate`，keyword `launch`），宿主持有、重启生效，Panel 内提供录入/改键/停用/解绑管理卡与冲突显示；②运行时兜底——`otools.shortcuts.register('CommandOrControl+Shift+D')`（webview 常驻期间），持久绑定启用时让位。穿透模式期间 overlay 页临时注册全局 `X`/`Escape` 保底（退出即释放）。宿主侧：关键词绑定分支对直达插件优先 `launch_direct_keyword_shortcut`（隐藏 Panel + 关键词透传），失败才回退 custom/入队链路 |
 | 窗口自适配 | overlay 挂载后 `availableMonitors()` 取 (0,0) 主显示器 → `setPosition/setSize`（Logical，物理值 ÷ scaleFactor）撑满屏幕；页面坐标直接用 innerWidth/innerHeight；多显示器 v2 迭代 |
 | 穿透 | `setIgnoreCursorEvents(true/false)`（SDK Window shim → 宿主 capability）；进入穿透隐藏工具栏/文字框/提示；失败 catch 保持交互模式不静默失联 |
 | 工具 | 11 种全量对齐 MarkerOn：select（拖拽/旋转/缩放/删除）、pen、highlighter、arrow、rect、ellipse、line、eraser（stroke/object 两模式）、laser（trail/writing）、text、stamp（数字/字母序号） |
