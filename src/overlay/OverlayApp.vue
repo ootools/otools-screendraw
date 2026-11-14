@@ -1850,7 +1850,9 @@ async function selfSizeToPrimaryMonitor(): Promise<void> {
     const monitors = await availableMonitors()
     const primary =
       monitors.find((m) => m.position.x === 0 && m.position.y === 0) ?? (monitors.length > 0 ? monitors[0] : null)
-    if (!primary) return
+    if (!primary) {
+      return
+    }
     const scale = primary.scaleFactor > 0 ? primary.scaleFactor : 1
     const win = getCurrentWindow()
     await win.setPosition(new LogicalPosition(primary.position.x / scale, primary.position.y / scale))
@@ -2079,12 +2081,19 @@ onMounted(async () => {
       debouncedResize()
     }),
   )
-  unlisteners.push(
-    await overlayWindow.onScaleChanged(() => {
-      watchDpr()
-      debouncedResize()
-    }),
-  )
+  // SDK window shim 没有 onScaleChanged（调用即 TypeError 且被 Vue 吞掉、
+  // 中断整个 onMounted——自适配与绘会话全部不启动）：改用守卫式通用事件订阅，
+  // 宿主不支持 tauri://scale-change 时静默降级（DPR 变化由 resize 事件 + watchDpr 兜底）。
+  try {
+    unlisteners.push(
+      await overlayWindow.listen('tauri://scale-change', () => {
+        watchDpr()
+        debouncedResize()
+      }),
+    )
+  } catch {
+    // SDK shim/宿主不支持 scale-change：DPR 变化由 resize 事件 + watchDpr 兜底。
+  }
 
   // 设置：挂载读一次 + storage 事件热更新（Panel 写 / Overlay 读，同源共享）。
   applySettings(loadSettings())
