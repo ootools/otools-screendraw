@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)"/>
+  <!-- 屏幕线框 -->
+  <rect x="26" y="34" width="76" height="52" rx="8" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="5"/>
+  <!-- 蜡笔画的波浪线 -->
+  <path d="M34 66 C 42 48, 52 48, 60 62 S 78 78, 94 56" fill="none" stroke="#fbbf24" stroke-width="9" stroke-linecap="round"/>
+  <!-- 蜡笔 -->
+  <g transform="rotate(38 96 42)">
+    <rect x="84" y="30" width="34" height="13" rx="6.5" fill="#f87171"/>
+    <path d="M118 32.5 L128 36.5 L118 40.5 Z" fill="#fca5a5"/>
+    <rect x="90" y="30" width="8" height="13" fill="#ffffff" fill-opacity="0.35"/>
+  </g>
+  <!-- 底座 -->
+  <rect x="48" y="94" width="32" height="6" rx="3" fill="#ffffff" fill-opacity="0.55"/>
+</svg>

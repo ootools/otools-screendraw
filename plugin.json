@@ -1,0 +1,36 @@
+{
+  "uuid": "otools-screendraw",
+  "packid": "otools-screendraw",
+  "displayName": "Screen Draw",
+  "displayNameCN": "屏幕标注",
+  "developerName": "OTools",
+  "summary": "快捷键或托盘一键唤起全屏透明标注层，画笔、荧光笔、图形、激光笔直接在任意应用上作画，支持点击穿透、白板模式与标注截图复制。",
+  "version": "0.1.0",
+  "entry": "dist/index.html",
+  "devUrl": "http://127.0.0.1:6550",
+  "quickDev": true,
+  "hasAd": false,
+  "inPluginPurchase": false,
+  "openInBrowser": false,
+  "openMode": "panel",
+  "directLaunch": true,
+  "panelWidth": 640,
+  "panelHeight": 560,
+  "trayActions": [
+    { "id": "annotate", "title": "Screen Draw", "titleCN": "屏幕标注", "keyword": "launch" }
+  ],
+  "logo": "logo.svg",
+  "icon": "🖍️",
+  "screenshots": [],
+  "key": [
+    "标注",
+    "屏幕",
+    "画笔",
+    "批注",
+    "白板",
+    "annotat",
+    "draw",
+    "marker",
+    "screen"
+  ]
+}
