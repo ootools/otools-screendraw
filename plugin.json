@@ -7,7 +7,7 @@
   "summary": "快捷键或托盘一键唤起全屏透明标注层，画笔、荧光笔、图形、激光笔直接在任意应用上作画，支持点击穿透、白板模式与标注截图复制。",
   "version": "0.1.0",
   "entry": "dist/index.html",
-  "devUrl": "http://127.0.0.1:6550",
+  "devUrl": "http://127.0.0.1:6553",
   "quickDev": true,
   "hasAd": false,
   "inPluginPurchase": false,

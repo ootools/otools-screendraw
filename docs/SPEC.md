@@ -15,7 +15,7 @@
 | 复制 | 白板/画布 → `canvas.toDataURL` → 宿主 `otools_copy_image`；标注截图 → 隐藏 UI → 宿主 `capture.select({mode:'region', hideHost:false})`（冻结画面含笔迹）→ `capture.readImage` → `otools_copy_image` → `capture.release` |
 | 设置持久化 | 同源 localStorage `otools-screendraw:settings:v1`（Panel 写 / Overlay 读 + storage 事件热更新）；结构 `src/settings.ts`（MarkerOn AppConfig.general 可移植子集） |
 | 工具栏 | 页内悬浮面板（Space 呼出 / always 常驻 / 可拖动）；MarkerOn 的两窗口工具栏架构不移植（穿透模式下工具栏隐藏，X 恢复） |
-| 端口 | devUrl `http://127.0.0.1:6550`（6541-6549 已占用；6548 烧毁；6551 备用） |
+| 端口 | devUrl `http://127.0.0.1:6553`（6541-6549 已占用；6550-6552 运行期被其他项目进程长期占用，实测顺延；6548 烧毁） |
 | 版本 | 0.1.0 |
 
 ## plugin.json

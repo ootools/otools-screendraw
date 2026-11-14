@@ -18,14 +18,14 @@
 
 ```bash
 pnpm install
-pnpm dev          # devUrl http://127.0.0.1:6550（宿主 quickDev 加载）
+pnpm dev          # devUrl http://127.0.0.1:6553（宿主 quickDev 加载）
 pnpm test         # vitest：核心绘制引擎 400+ 单测
 pnpm build        # vue-tsc --noEmit && vite build
 node scripts/pack-plugin.mjs     # 打包 dist-pack/*.oplg
 node scripts/verify-plugin.mjs   # 校验 .oplg
 ```
 
-- devUrl 端口 `6550`（6541–6549 已被其他插件占用，6551 备用）
+- devUrl 端口 `6553`（6541–6549 已被其他插件占用；6550-6552 运行期被其他项目进程长期占用，实测顺延）
 - 架构：单入口双页面——`index.html`（Panel：直达控制器 + 设置）与
   `index.html?overlay=1`（Overlay：全屏透明标注层，宿主 custom 窗口承载）
 - 穿透模式依赖宿主 `core:window:allow-set-ignore-cursor-events` capability
