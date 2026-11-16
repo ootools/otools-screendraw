@@ -1,8 +1,0 @@
-{
-  "source": "host repo otools/otools vendor/otools-plugin-sdk",
-  "hostCommit": "54c28a29f9b16918ac0a1e55c901dc62e54b5df4",
-  "version": "0.2.0",
-  "contents": "package.json, dist, LICENSE, README.md",
-  "reason": "Pinned snapshot with trayActions-era host commands (open_custom_plugin_window, shortcuts, capture mode/freezeScreen, otools_copy_image routing).",
-  "changesFromBase": "none"
-}
