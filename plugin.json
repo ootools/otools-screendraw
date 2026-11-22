@@ -32,5 +32,6 @@
     "draw",
     "marker",
     "screen"
-  ]
+  ],
+  "openSourceUrl": "https://github.com/ootools/otools-screendraw"
 }
